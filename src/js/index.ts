@@ -3,12 +3,13 @@ import axios, {
     AxiosResponse
 } from "../../node_modules/axios/index"
 
+
 interface ICustomer{
     counter: number
     dateTime: Date
 }
 
-let baseUrl: string = "//TODO rest uri";
+let baseUrl: string = "https://smartcanteenrest.azurewebsites.net/api/customers";
 
 new Vue({
     // TypeScript compiler complains about Vue because the CDN link to Vue is in the html file.
@@ -16,21 +17,38 @@ new Vue({
     // which is included at the bottom of the html file.
     el: "#app",
     data: {
-      customerdata: [],
-      idToGetBy: -1
+        customers: [],
+        weatherreport: [],
+        sales: []
     },
     methods: {
-        helperGetAndShow(url: string){ // helper method 
+        getAllCustomers(){
+            this.helperGetAndShow(baseUrl)
+        },
+        helperGetAndShow(url: string){
             axios.get<ICustomer[]>(url)
-            .then((response: AxiosResponse<ICustomer[]>) => {
-                this.customerdata = response.data
+            .then((Response: AxiosResponse<ICustomer[]>) => {
+                this.customers = Response.data
             })
             .catch((error: AxiosError) => {
                 alert(error.message)
             })
-        }, 
-        getAllData(){
-            this.helperGetAndShow(baseUrl)
+        },
+        clearAllData(){
+            this.customers = 0;
+        },
+        getWeatherReport(){
+
+        },
+        clearAllWeather(){
+            this.weatherreport = 0;
+        },
+        getAllSales(){
+
+        },
+        clearAllSales(){
+            this.sales = 0;
         }
     }
+    
 })

@@ -18,8 +18,17 @@ interface IWeather{
     dateTime: Date
 }
 
+interface IProduct{
+    fkid: number
+    name: string
+    price: number
+    protein: number
+    isHot: boolean
+}
+
 let customerUrl: string = "https://smartcanteenrest.azurewebsites.net/api/customers";
 let weatherUrl: string = "https://smartcanteenrest.azurewebsites.net/api/weather/saves";
+let productUrl: string = "https://smartcanteenrest.azurewebsites.net/api/products";
 
 new Vue({
     // TypeScript compiler complains about Vue because the CDN link to Vue is in the html file.
@@ -29,7 +38,8 @@ new Vue({
     data: {
         customers: [],
         weatherreport: [],
-        sales: []
+        sales: [],
+        products: []
     },
     methods: {
         getAllCustomers(){
@@ -37,6 +47,9 @@ new Vue({
         },
         getWeatherReport(){
             this.WeatherHelperGetAndShow(weatherUrl)
+        },
+        getAllProducts(){
+            this.ProductHelperGetAndShow(productUrl)
         },
         CustomerHelperGetAndShow(url: string){
             axios.get<ICustomer[]>(url)
@@ -56,6 +69,20 @@ new Vue({
                 alert(error.message)
             })
         },
+
+
+        // Product
+        ProductHelperGetAndShow(url: string){
+            axios.get<IProduct[]>(url)
+            .then((Response: AxiosResponse<IProduct[]>) => {
+                this.products = Response.data
+            })
+            .catch((error: AxiosError) => {
+                alert(error.message)
+            })
+        },
+
+
         clearAllData(){
             this.customers = 0;
         },

@@ -115,6 +115,20 @@
       </div>
     </div>
 
+    <div class="card bg-light mb-3">
+      <div class="card-header"><strong>Products</strong></div>
+      <div class="card-body">
+
+        <ol class="liste">
+          <button id="getProducts" v-on:click="getAllProducts" class="btn btn-success">Get Products</button>
+          <li v-for="getproducts in products" >Product name: {{getproducts.name}} <br> Price: {{getproducts.price}} <br> Protein: {{getproducts.protein}} <br> isHot: {{getproducts.isHot}}</li>
+        </ol>
+
+      </div>
+    </div>
+
+
+
     <ol class="breadcrumb">
       <li class="breadcrumb-item"><a href="#">Home</a></li>
     </ol>

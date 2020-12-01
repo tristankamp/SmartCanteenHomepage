@@ -10,14 +10,16 @@ interface ICustomer{
 }
 
 interface IWeather{
+    location: string
     temperature: number
-    windspeed: number
-    precipitation: number
-    sunshine: number
+    rain: number
+    sun: number
+    wind: number
+    dateTime: Date
 }
 
 let customerUrl: string = "https://smartcanteenrest.azurewebsites.net/api/customers";
-let weatherUrl: string = "https://smartcanteenrest.azurewebsites.net/api/weather";
+let weatherUrl: string = "https://smartcanteenrest.azurewebsites.net/api/weather/saves";
 
 new Vue({
     // TypeScript compiler complains about Vue because the CDN link to Vue is in the html file.

@@ -95,7 +95,7 @@
 
         <ol class="liste">
           <button id="getAllWeatherReports" v-on:click="getWeatherReport" class="btn btn-success">Get</button>
-          <li v-for="weather in weatherreport"> Temperature : {{weather.temperature}} <br> Windspeed : {{weather.windspeed}} <br> Precipitation : {{weather.precipitation}} <br> Sunshine : {{weather.sunshine}} </li>
+          <li v-for="weather in weatherreport"> Location : {{weather.location}} <br> Temperature : {{weather.temperature}} <br> Windspeed : {{weather.wind}} <br> Precipitation : {{weather.rain}} <br> Sunshine : {{weather.sun}} <br> Date : {{weather.dateTime}} </li>
           <button id="clearAllWeather" v-on:click="clearAllWeather" class="btn btn-danger">Clear</button>
         </ol>
 

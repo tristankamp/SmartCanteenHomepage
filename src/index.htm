@@ -83,7 +83,7 @@
         <ol class="liste">
           <button id="getAllCustomersButton" v-on:click="getAllCustomers" class="btn btn-success">Get</button>
            <li v-for="customer in customers"> Customer Count : {{customer.counter}} <br> Date/Time : {{customer.dateTime}}</li>
-           <button id="clearAllCustomerData" v-on:click="clearAllData" class="btn btn-danger">Clear</button>
+           <button id="clearAllCustomerDataButton" v-on:click="clearAllData" class="btn btn-danger">Clear</button>
         </ol>
 
       </div>
@@ -94,22 +94,9 @@
       <div class="card-body">
 
         <ol class="liste">
-          <button id="getAllWeatherReports" v-on:click="getWeatherReport" class="btn btn-success">Get</button>
+          <button id="getAllWeatherReportsButton" v-on:click="getWeatherReport" class="btn btn-success">Get</button>
           <li v-for="weather in weatherreport"> Location : {{weather.location}} <br> Temperature : {{weather.temperature}} <br> Windspeed : {{weather.wind}} <br> Precipitation : {{weather.rain}} <br> Sunshine : {{weather.sun}} <br> Date : {{weather.dateTime}} </li>
-          <button id="clearAllWeather" v-on:click="clearAllWeather" class="btn btn-danger">Clear</button>
-        </ol>
-
-      </div>
-    </div>
-
-    <div class="card bg-light mb-3">
-      <div class="card-header"><strong>Sales</strong></div>
-      <div class="card-body">
-
-        <ol class="liste">
-          <button id="getSales" v-on:click="getAllSales" class="btn btn-success">Get</button>
-          <li v-for="sale in sales"></li>
-          <button id="clearAllSales" v-on:click="clearAllSales" class="btn btn-danger">Clear</button>
+          <button id="clearAllWeatherButton" v-on:click="clearAllWeather" class="btn btn-danger">Clear</button>
         </ol>
 
       </div>
@@ -120,19 +107,19 @@
       <div class="card-body">
 
         <ol class="liste">
-          <button id="getProducts" v-on:click="getAllProducts" class="btn btn-success">Get Products</button>
-          <li v-for="getproducts in products" >Product name: {{getproducts.name}} <br> Price: {{getproducts.price}} <br> Protein: {{getproducts.protein}} <br> isHot: {{getproducts.isHot}}</li>
+          <button id="getAllProductsButton" v-on:click="getAllProducts" class="btn btn-success">Get</button>
+          <button id="getAllHotProductsButton" v-on:click="getAllHotProducts" class="btn btn-success">Get Hot</button>
+          <button id="getAllColdProductsButton" v-on:click="getAllColdProducts" class="btn btn-success">Get Cold</button>
+          <li v-for="getproducts in products" >Product name : {{getproducts.name}} <br> Price : {{getproducts.price}} <br> Protein : {{getproducts.protein}} <br> isHot : {{getproducts.isHot}}</li>
+          <button id="clearAllProductsButton" v-on:click="clearAllProducts" class="btn btn-danger">Clear</button>
         </ol>
 
       </div>
     </div>
 
-
-
     <ol class="breadcrumb">
       <li class="breadcrumb-item"><a href="#">Home</a></li>
     </ol>
-
     
   </div>
   <script src="bundle.js"></script>

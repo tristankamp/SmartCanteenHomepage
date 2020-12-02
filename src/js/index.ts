@@ -3,7 +3,6 @@ import axios, {
     AxiosResponse
 } from "../../node_modules/axios/index"
 
-
 interface ICustomer{
     counter: number
     dateTime: Date
@@ -29,6 +28,8 @@ interface IProduct{
 let customerUrl: string = "https://smartcanteenrest.azurewebsites.net/api/customers";
 let weatherUrl: string = "https://smartcanteenrest.azurewebsites.net/api/weather/saves";
 let productUrl: string = "https://smartcanteenrest.azurewebsites.net/api/products";
+let productIsHotTrue: string = "http://smartcanteenrest.azurewebsites.net/api/products/true";
+let productIsHotFalse: string = "http://smartcanteenrest.azurewebsites.net/api/products/false";
 
 new Vue({
     // TypeScript compiler complains about Vue because the CDN link to Vue is in the html file.
@@ -51,6 +52,13 @@ new Vue({
         getAllProducts(){
             this.ProductHelperGetAndShow(productUrl)
         },
+        getAllHotProducts(){
+            this.ProductHelperGetAndShow(productIsHotTrue)
+        },
+        getAllColdProducts(){
+            this.ProductHelperGetAndShow(productIsHotFalse)
+        },
+        // Customer
         CustomerHelperGetAndShow(url: string){
             axios.get<ICustomer[]>(url)
             .then((Response: AxiosResponse<ICustomer[]>) => {
@@ -60,6 +68,7 @@ new Vue({
                 alert(error.message)
             })
         },
+        // Weather
         WeatherHelperGetAndShow(url: string){
             axios.get<IWeather[]>(url)
             .then((Response: AxiosResponse<IWeather[]>) => {
@@ -69,8 +78,6 @@ new Vue({
                 alert(error.message)
             })
         },
-
-
         // Product
         ProductHelperGetAndShow(url: string){
             axios.get<IProduct[]>(url)
@@ -81,19 +88,17 @@ new Vue({
                 alert(error.message)
             })
         },
-
-
+       // Clears Customer array
         clearAllData(){
             this.customers = 0;
         },
+        // Clears Weather array
         clearAllWeather(){
             this.weatherreport = 0;
         },
-        getAllSales(){
-
-        },
-        clearAllSales(){
-            this.sales = 0;
+        // Clears Product array
+        clearAllProducts(){
+            this.products = 0;
         }
     }
     

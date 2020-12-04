@@ -118,6 +118,7 @@
           <input v-model="date" type="date">
           <button v-on:click="getOrderByDate(date)" class="btn btn-success">Search</button>
           <li v-for="order in orders"> Order Date : {{order.orderDate}} <br> Product Count : {{order.productCount}} </li>
+          <button id="clearAllOrdersButton" v-on:click="clearAllOrders" class="btn btn-danger">Clear</button>
           <br><br>
 
           <div class="dropdown">

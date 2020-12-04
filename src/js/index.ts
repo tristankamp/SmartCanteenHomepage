@@ -144,7 +144,9 @@ new Vue({
         // Clears Product array
         clearAllProducts(){
             this.products = 0;
+        },
+        clearAllOrders(){
+            this.orders = 0;
         }
     }
-    
 })

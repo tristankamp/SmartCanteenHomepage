@@ -25,8 +25,15 @@ interface IProduct{
     isHot: boolean
 }
 
+interface IOrder{
+    orderId: number
+    productCount: number
+    orderDate: Date
+}
+
 //REST urls
 let customerUrl: string = "https://smartcanteenrest.azurewebsites.net/api/customers";
+let ordersUrl: string = "https://smartcanteenrest.azurewebsites.net/api/orders/";
 let weatherUrl: string = "https://smartcanteenrest.azurewebsites.net/api/weather/saves";
 let productUrl: string = "https://smartcanteenrest.azurewebsites.net/api/products";
 let productIsHotTrue: string = "http://smartcanteenrest.azurewebsites.net/api/products/true";
@@ -46,7 +53,9 @@ new Vue({
         customers: [],
         weatherreport: [],
         sales: [],
-        products: []
+        products: [],
+        orders: [],
+        date: ""
     },
     methods: {
         // GETS
@@ -58,6 +67,9 @@ new Vue({
         },
         getAllProducts(){
             this.ProductHelperGetAndShow(productUrl)
+        },
+        getAllOrders(){
+            this.OrderHelperGetAndShow(ordersUrl)
         },
         getAllHotProducts(){
             this.ProductHelperGetAndShow(productIsHotTrue)
@@ -106,6 +118,17 @@ new Vue({
             .then((Response: AxiosResponse<IProduct[]>) => {
                 this.products = Response.data
             })
+            .catch((error: AxiosError) => {
+                alert(error.message)
+            })
+        },
+        // Orders
+        getOrderByDate(date: Date): void{
+            let uri: string = ordersUrl + "/" + date
+            axios.get<IOrder>(uri)
+            .then((reponse: AxiosResponse<IOrder>) => {
+                this.data = reponse.data
+            }) 
             .catch((error: AxiosError) => {
                 alert(error.message)
             })

@@ -115,8 +115,9 @@
 
         <ol class="liste">
 
-          <input placeholder="yyyy/mm/dd">
-          <button>Search</button>
+          <input v-model="date">
+          <button v-on:click="getOrderByDate(date)" class="btn btn-success">Search</button>
+          <li v-for="orderdate in orders"> {{orderdate.orderDate}} </li>
           <br><br>
 
           <div class="dropdown">

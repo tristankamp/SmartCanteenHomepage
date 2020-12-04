@@ -33,7 +33,7 @@ interface IOrder{
 
 //REST urls
 let customerUrl: string = "https://smartcanteenrest.azurewebsites.net/api/customers";
-let ordersUrl: string = "https://smartcanteenrest.azurewebsites.net/api/orders/";
+let ordersUrl: string = "https://smartcanteenrest.azurewebsites.net/api/orders";
 let weatherUrl: string = "https://smartcanteenrest.azurewebsites.net/api/weather/saves";
 let productUrl: string = "https://smartcanteenrest.azurewebsites.net/api/products";
 let productIsHotTrue: string = "http://smartcanteenrest.azurewebsites.net/api/products/true";
@@ -123,11 +123,11 @@ new Vue({
             })
         },
         // Orders
-        getOrderByDate(date: Date): void{
+        getOrderByDate(date: Date) {
             let uri: string = ordersUrl + "/" + date
             axios.get<IOrder>(uri)
-            .then((reponse: AxiosResponse<IOrder>) => {
-                this.data = reponse.data
+            .then((Reponse: AxiosResponse<IOrder>) => {
+                this.orders = Reponse.data
             }) 
             .catch((error: AxiosError) => {
                 alert(error.message)

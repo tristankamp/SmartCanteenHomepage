@@ -7,25 +7,28 @@
   <title>SmartCanteen</title>
   <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
     integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
-    <link type="css" rel="stylesheet" href="src/node_modules/bootstrap/dist/css/bootstrap.css" crossorigin="anonymous">
-    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+  <link type="css" rel="stylesheet" href="src/node_modules/bootstrap/dist/css/bootstrap.css" crossorigin="anonymous">
+  <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
 </head>
 
 <style>
-  .liste{
-    max-height: 200px; 
+  .liste {
+    max-height: 200px;
     overflow: auto;
     font-family: monospace;
   }
-  .card{
-    margin-left: 5%; 
-    margin-right: 5%; 
+  .card {
+    margin-left: 5%;
+    margin-right: 5%;
     width: auto;
   }
-  .breadcrumb{
-    margin-left: 5%; 
-    margin-right: 5%; 
+  .breadcrumb {
+    margin-left: 5%;
+    margin-right: 5%;
     width: auto;
+  }
+  .dropdown{
+    height: 140px;
   }
 </style>
 
@@ -68,7 +71,8 @@
       <div class="card-header"><strong>Smart Canteen</strong></div>
       <div class="card-body">
         <h4 class="card-title">Welcome</h4>
-        <p class="card-text">SmartCanteen strives to improve foodwaste, by cross referencing customer data with weather reports, to check
+        <p class="card-text">SmartCanteen strives to improve foodwaste, by cross referencing customer data with weather
+          reports, to check
           when certain types of food are sold to students.
         </p>
       </div>
@@ -82,8 +86,9 @@
 
         <ol class="liste">
           <button id="getAllCustomersButton" v-on:click="getAllCustomers" class="btn btn-success">Get</button>
-           <li v-for="customer in customers"> Customer Count : {{customer.counter}} <br> Date/Time : {{customer.dateTime}}</li>
-           <button id="clearAllCustomerDataButton" v-on:click="clearAllData" class="btn btn-danger">Clear</button>
+          <li v-for="customer in customers"> Customer Count : {{customer.counter}} <br> Date/Time :
+            {{customer.dateTime}}</li>
+          <button id="clearAllCustomerDataButton" v-on:click="clearAllData" class="btn btn-danger">Clear</button>
         </ol>
 
       </div>
@@ -95,7 +100,9 @@
 
         <ol class="liste">
           <button id="getAllWeatherReportsButton" v-on:click="getWeatherReport" class="btn btn-success">Get</button>
-          <li v-for="weather in weatherreport"> Location : {{weather.location}} <br> Temperature : {{weather.temperature}} <br> Windspeed : {{weather.wind}} <br> Precipitation : {{weather.rain}} <br> Sunshine : {{weather.sun}} <br> Date : {{weather.dateTime}} </li>
+          <li v-for="weather in weatherreport"> Location : {{weather.location}} <br> Temperature :
+            {{weather.temperature}} <br> Windspeed : {{weather.wind}} <br> Precipitation : {{weather.rain}} <br>
+            Sunshine : {{weather.sun}} <br> Date : {{weather.dateTime}} </li>
           <button id="clearAllWeatherButton" v-on:click="clearAllWeather" class="btn btn-danger">Clear</button>
         </ol>
 
@@ -112,10 +119,24 @@
           <button>Search</button>
           <br><br>
 
+          <div class="dropdown">
+            <button class="btn btn-success dropdown-toggle" type="button" id="dropdownMenu2" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+              Get Category
+            </button>
+            <div class="dropdown-menu" aria-labelledby="dropdownMenu2">
+              <button class="dropdown-item" type="button" v-on:click="getCategoryOne">Drinks</button>
+              <button class="dropdown-item" type="button" v-on:click="getCategoryTwo">Soups</button>
+              <button class="dropdown-item" type="button" v-on:click="getCategoryThree">Woks</button>
+              <button class="dropdown-item" type="button" v-on:click="getCategoryFour">Porridge</button>
+              <button class="dropdown-item" type="button" v-on:click="getCategoryFive">Snacks</button>
+            </div>
+
           <button id="getAllProductsButton" v-on:click="getAllProducts" class="btn btn-success">Get</button>
           <button id="getAllHotProductsButton" v-on:click="getAllHotProducts" class="btn btn-success">Get Hot</button>
-          <button id="getAllColdProductsButton" v-on:click="getAllColdProducts" class="btn btn-success">Get Cold</button>
-          <li v-for="getproducts in products" >Product name : {{getproducts.name}} <br> Price : {{getproducts.price}} <br> Protein : {{getproducts.protein}} <br> isHot : {{getproducts.isHot}}</li>
+          <button id="getAllColdProductsButton" v-on:click="getAllColdProducts" class="btn btn-success">Get
+            Cold</button>
+          <li v-for="getproducts in products">Product name : {{getproducts.name}} <br> Price : {{getproducts.price}}
+            <br> Protein : {{getproducts.protein}} <br> isHot : {{getproducts.isHot}}</li>
           <button id="clearAllProductsButton" v-on:click="clearAllProducts" class="btn btn-danger">Clear</button>
         </ol>
 
@@ -125,9 +146,18 @@
     <ol class="breadcrumb">
       <li class="breadcrumb-item"><a href="#">Home</a></li>
     </ol>
-    
+
   </div>
   <script src="bundle.js"></script>
+  <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"
+    integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN"
+    crossorigin="anonymous"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.11.0/umd/popper.min.js"
+    integrity="sha384-b/U6ypiBEHpOf/4+1nzFpr53nxSS+GLCkfwBdFNTxtclqqenISfwAzpKaMNFNmj4"
+    crossorigin="anonymous"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta/js/bootstrap.min.js"
+    integrity="sha384-h0AbiXch4ZDo7tp9hKZ4TsHbi047NrKGLO3SEJAg45jXxnGIfYzk4Si90RDIqNm1"
+    crossorigin="anonymous"></script>
 </body>
 
 </html>

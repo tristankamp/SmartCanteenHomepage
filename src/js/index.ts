@@ -25,11 +25,17 @@ interface IProduct{
     isHot: boolean
 }
 
+//REST urls
 let customerUrl: string = "https://smartcanteenrest.azurewebsites.net/api/customers";
 let weatherUrl: string = "https://smartcanteenrest.azurewebsites.net/api/weather/saves";
 let productUrl: string = "https://smartcanteenrest.azurewebsites.net/api/products";
 let productIsHotTrue: string = "http://smartcanteenrest.azurewebsites.net/api/products/true";
 let productIsHotFalse: string = "http://smartcanteenrest.azurewebsites.net/api/products/false";
+let categoryOne: string = "https://smartcanteenrest.azurewebsites.net/api/products/category/1";
+let categoryTwo: string = "https://smartcanteenrest.azurewebsites.net/api/products/category/2";
+let categoryThree: string = "https://smartcanteenrest.azurewebsites.net/api/products/category/3";
+let categoryFour: string = "https://smartcanteenrest.azurewebsites.net/api/products/category/4";
+let categoryFive: string = "https://smartcanteenrest.azurewebsites.net/api/products/category/5";
 
 new Vue({
     // TypeScript compiler complains about Vue because the CDN link to Vue is in the html file.
@@ -43,6 +49,7 @@ new Vue({
         products: []
     },
     methods: {
+        // GETS
         getAllCustomers(){
             this.CustomerHelperGetAndShow(customerUrl)
         },
@@ -57,6 +64,21 @@ new Vue({
         },
         getAllColdProducts(){
             this.ProductHelperGetAndShow(productIsHotFalse)
+        },
+        getCategoryOne(){
+            this.ProductHelperGetAndShow(categoryOne)
+        },
+        getCategoryTwo(){
+            this.ProductHelperGetAndShow(categoryTwo)
+        },
+        getCategoryThree(){
+            this.ProductHelperGetAndShow(categoryThree)
+        },
+        getCategoryFour(){
+            this.ProductHelperGetAndShow(categoryFour)
+        },
+        getCategoryFive(){
+            this.ProductHelperGetAndShow(categoryFive)
         },
         // Customer
         CustomerHelperGetAndShow(url: string){

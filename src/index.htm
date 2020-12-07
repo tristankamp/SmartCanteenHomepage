@@ -17,58 +17,70 @@
     overflow: auto;
     font-family: monospace;
   }
+
   .card {
     margin-left: 5%;
     margin-right: 5%;
     width: auto;
   }
+
   .breadcrumb {
     margin-left: 5%;
     margin-right: 5%;
     width: auto;
   }
-  .dropdown{
+
+  .dropdown {
     height: 140px;
+  }
+
+  #shiny-shadow {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 100vh;
+    background: #1c2541;
+  }
+
+  button:after {
+    content: '';
+    display: block;
+    position: absolute;
+    top: -36px;
+    left: -100px;
+    background: white;
+    width: 50px;
+    height: 125px;
+    opacity: 20%;
+    transform: rotate(-45deg);
+  }
+
+  button:hover:after {
+    left: 120%;
+    transition: all 600ms cubic-bezier(0.3, 1, 0.2, 1);
+    -webkit-transition: all 600ms cubic-bezier(0.3, 1, 0.2, 1);
+  }
+
+  button {
+    border: 0;
+    text-transform: uppercase;
+    font-weight: bold;
+    position: relative;
+    outline: none;
+    padding: 10px 20px;
+    box-sizing: border-box;
+    background: transparent;
+    color: white;
+    overflow: hidden;
   }
 </style>
 
 <body>
   <div id="app">
-
-    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
-      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarColor02"
-        aria-controls="navbarColor02" aria-expanded="false" aria-label="Toggle navigation">
-        <span class="navbar-toggler-icon"></span>
-      </button>
-
-      <div class="collapse navbar-collapse" id="navbarColor02">
-        <ul class="navbar-nav mr-auto">
-          <li class="nav-item active">
-            <a class="nav-link" href="#">Home
-              <span class="sr-only">(current)</span>
-            </a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="#">About</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="#">Customers</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="#">Weather</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="#">Sales</a>
-          </li>
-        </ul>
-      </div>
-    </nav>
-
-    <br>
     <br>
 
     <div class="card bg-light mb-3">
-      <div class="card-header"><strong>Smart Canteen</strong></div>
+      <div class="card-header" style="text-align: center; font-size: x-large;"><strong>Smart Canteen</strong></div>
       <div class="card-body">
         <h4 class="card-title">Welcome</h4>
         <p class="card-text">SmartCanteen strives to improve foodwaste, by cross referencing customer data with weather
@@ -77,8 +89,6 @@
         </p>
       </div>
     </div>
-
-    <br>
 
     <div class="card bg-light mb-3">
       <div class="card-header"><strong>Customer Data</strong></div>
@@ -117,12 +127,14 @@
 
           <input v-model="date" type="date">
           <button v-on:click="getOrderByDate(date)" class="btn btn-success">Search</button>
-          <li v-for="order in orders"> Order ID : {{order.orderId}} <br> Order Date : {{order.orderDate}} <br> Product Count : {{order.productCount}} </li>
+          <li v-for="order in orders"> Order ID : {{order.orderId}} <br> Order Date : {{order.orderDate}} <br> Product
+            Count : {{order.productCount}} </li>
           <button id="clearAllOrdersButton" v-on:click="clearAllOrders" class="btn btn-danger">Clear</button>
           <br><br>
 
           <div class="dropdown">
-            <button class="btn btn-success dropdown-toggle" type="button" id="dropdownMenu2" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+            <button class="btn btn-success dropdown-toggle" type="button" id="dropdownMenu2" data-toggle="dropdown"
+              aria-haspopup="true" aria-expanded="false">
               Get Category
             </button>
             <div class="dropdown-menu" aria-labelledby="dropdownMenu2">
@@ -133,13 +145,13 @@
               <button class="dropdown-item" type="button" v-on:click="getCategoryFive">Snacks</button>
             </div>
 
-          <button id="getAllProductsButton" v-on:click="getAllProducts" class="btn btn-success">Get</button>
-          <button id="getAllHotProductsButton" v-on:click="getAllHotProducts" class="btn btn-success">Get Hot</button>
-          <button id="getAllColdProductsButton" v-on:click="getAllColdProducts" class="btn btn-success">Get
-            Cold</button>
-          <li v-for="getproducts in products">Product name : {{getproducts.name}} <br> Price : {{getproducts.price}}
-            <br> Protein : {{getproducts.protein}} <br> isHot : {{getproducts.isHot}}</li>
-          <button id="clearAllProductsButton" v-on:click="clearAllProducts" class="btn btn-danger">Clear</button>
+            <button id="getAllProductsButton" v-on:click="getAllProducts" class="btn btn-success">Get</button>
+            <button id="getAllHotProductsButton" v-on:click="getAllHotProducts" class="btn btn-success">Get Hot</button>
+            <button id="getAllColdProductsButton" v-on:click="getAllColdProducts" class="btn btn-success">Get
+              Cold</button>
+            <li v-for="getproducts in products">Product name : {{getproducts.name}} <br> Price : {{getproducts.price}}
+              <br> Protein : {{getproducts.protein}} <br> isHot : {{getproducts.isHot}}</li>
+            <button id="clearAllProductsButton" v-on:click="clearAllProducts" class="btn btn-danger">Clear</button>
         </ol>
 
       </div>

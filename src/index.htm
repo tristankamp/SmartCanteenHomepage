@@ -94,6 +94,8 @@
       <div class="card-header"><strong>Customer Data</strong></div>
       <div class="card-body">
 
+        <div v-if="todaysCustomers">Antal kunder idag: {{ todaysCustomers.counter }} </div>
+
         <ol class="liste">
           <button id="getAllCustomersButton" v-on:click="getAllCustomers" class="btn btn-success">Get</button>
           <li v-for="customer in customers"> Customer Count : {{customer.counter}} <br> Date/Time :

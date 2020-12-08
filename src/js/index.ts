@@ -50,6 +50,7 @@ new Vue({
     // which is included at the bottom of the html file.
     el: "#app",
     data: {
+        todaysCustomers: null,
         customers: [],
         weatherreport: [],
         sales: [],
@@ -57,10 +58,19 @@ new Vue({
         orders: [],
         date: ""
     },
+    // Upon load
+    created(){
+        this.getTodaysCustomers()
+    },
     methods: {
         // GETS
         getAllCustomers(){
             this.CustomerHelperGetAndShow(customerUrl)
+        },
+        getTodaysCustomers(){
+            setInterval(() => {
+                this.CustomerHelperGetAndShow2(customerUrl + "/today")
+            }, 5000);   
         },
         getWeatherReport(){
             this.WeatherHelperGetAndShow(weatherUrl)
@@ -92,11 +102,21 @@ new Vue({
         getCategoryFive(){
             this.ProductHelperGetAndShow(categoryFive)
         },
-        // Customer
+        // All CustomerData
         CustomerHelperGetAndShow(url: string){
             axios.get<ICustomer[]>(url)
             .then((Response: AxiosResponse<ICustomer[]>) => {
                 this.customers = Response.data
+            })
+            .catch((error: AxiosError) => {
+                alert(error.message)
+            })
+        },
+        // Todays CustomerData
+        CustomerHelperGetAndShow2(url: string){
+            axios.get<ICustomer>(url)
+            .then((Response: AxiosResponse<ICustomer>) => {
+                this.todaysCustomers = Response.data
             })
             .catch((error: AxiosError) => {
                 alert(error.message)
@@ -133,7 +153,7 @@ new Vue({
                 alert(error.message)
             })
         },
-       // Clears Customer array
+        // Clears Customer array
         clearAllData(){
             this.customers = 0;
         },

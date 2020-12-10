@@ -3,6 +3,7 @@ import axios, {
     AxiosResponse
 } from "../../node_modules/axios/index"
 
+// Interfaces
 interface ICustomer{
     counter: number
     dateTime: Date
@@ -54,7 +55,6 @@ let categoryFour: string = "https://smartcanteenrest.azurewebsites.net/api/produ
 let categoryFive: string = "https://smartcanteenrest.azurewebsites.net/api/products/category/5";
 let productFoodUrl: string = "https://smartcanteenrest.azurewebsites.net/api/Products/saleSpecificFoodDate";
 let productDrinkUrl: string = "https://smartcanteenrest.azurewebsites.net/api/Products/saleSpecificDrinkDate";
-
 
 new Vue({
     // TypeScript compiler complains about Vue because the CDN link to Vue is in the html file.
@@ -167,6 +167,7 @@ new Vue({
                 alert(error.message)
             })
         },
+        // Specific sale by date
         getSpecificFoodByDate(date: Date){
             let uri: string = productFoodUrl + "/" + date
             axios.get<ISale>(uri)
@@ -177,6 +178,7 @@ new Vue({
                 alert(error.message)
             })
         },
+        // Specific sale by date
         getSpecificDrinkByDate(date: Date){
             let uri: string = productDrinkUrl + "/" + date
             axios.get<ISale>(uri)
@@ -187,21 +189,23 @@ new Vue({
                 alert(error.message)
             })
         },
-        // Clears Customer array
+        // Clear Customer array
         clearAllData(){
             this.customers = 0;
         },
-        // Clears Weather array
+        // Clear Weather array
         clearAllWeather(){
             this.weatherreport = 0;
         },
-        // Clears Product array
+        // Clear Product array
         clearAllProducts(){
             this.products = 0;
         },
+        // Clear Order array
         clearAllOrders(){
             this.orders = 0;
         },
+        // Clear both Sales array
         clearSpecificItem(){
             this.specificFoodSale = 0
             this.specificDrinkSale = 0

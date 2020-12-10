@@ -31,6 +31,15 @@ interface IOrder{
     orderDate: Date
 }
 
+interface ISale{
+    prodId: number
+    salesQuantity: number
+    prodName: string
+    prodPrice: number
+    totalPrice: number
+    orderDate: Date
+}
+
 //REST urls
 let customerUrl: string = "https://smartcanteenrest.azurewebsites.net/api/customers";
 let ordersUrl: string = "https://smartcanteenrest.azurewebsites.net/api/orders";
@@ -43,6 +52,9 @@ let categoryTwo: string = "https://smartcanteenrest.azurewebsites.net/api/produc
 let categoryThree: string = "https://smartcanteenrest.azurewebsites.net/api/products/category/3";
 let categoryFour: string = "https://smartcanteenrest.azurewebsites.net/api/products/category/4";
 let categoryFive: string = "https://smartcanteenrest.azurewebsites.net/api/products/category/5";
+let productFoodUrl: string = "https://smartcanteenrest.azurewebsites.net/api/Products/saleSpecificFoodDate";
+let productDrinkUrl: string = "https://smartcanteenrest.azurewebsites.net/api/Products/saleSpecificDrinkDate";
+
 
 new Vue({
     // TypeScript compiler complains about Vue because the CDN link to Vue is in the html file.
@@ -56,7 +68,9 @@ new Vue({
         sales: [],
         products: [],
         orders: [],
-        date: ""
+        date: "",
+        specificFoodSale: [],
+        specificDrinkSale: []
     },
     // Upon load
     created(){
@@ -153,6 +167,26 @@ new Vue({
                 alert(error.message)
             })
         },
+        getSpecificFoodByDate(date: Date){
+            let uri: string = productFoodUrl + "/" + date
+            axios.get<ISale>(uri)
+            .then((Response: AxiosResponse<ISale>) => {
+                this.specificFoodSale = Response.data
+            })
+            .catch ((error: AxiosError) =>{
+                alert(error.message)
+            })
+        },
+        getSpecificDrinkByDate(date: Date){
+            let uri: string = productDrinkUrl + "/" + date
+            axios.get<ISale>(uri)
+            .then((Response: AxiosResponse<ISale>) => {
+                this.specificDrinkSale = Response.data
+            })
+            .catch ((error: AxiosError) => {
+                alert(error.message)
+            })
+        },
         // Clears Customer array
         clearAllData(){
             this.customers = 0;
@@ -167,6 +201,10 @@ new Vue({
         },
         clearAllOrders(){
             this.orders = 0;
+        },
+        clearSpecificItem(){
+            this.specificFoodSale = 0
+            this.specificDrinkSale = 0
         }
     }
 })

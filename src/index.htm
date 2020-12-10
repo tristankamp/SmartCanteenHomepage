@@ -92,7 +92,7 @@
 
     <div class="card bg-light mb-3">
       <div class="card-header"><strong>Customer Data</strong></div>
-      <div class="card-body">
+      <div class="card-body" style="font-family: monospace;">
 
         <div v-if="todaysCustomers">Antal kunder idag: {{ todaysCustomers.counter }} </div>
 
@@ -154,10 +154,37 @@
             <li v-for="getproducts in products">Product name : {{getproducts.name}} <br> Price : {{getproducts.price}}
               <br> Protein : {{getproducts.protein}} <br> isHot : {{getproducts.isHot}}</li>
             <button id="clearAllProductsButton" v-on:click="clearAllProducts" class="btn btn-danger">Clear</button>
-        </ol>
+              
+              <br>
+              <br>
 
+            <input v-model="date" type="date">
+        <button v-on:click="getSpecificDrinkByDate(date)" class="btn btn-success">Search specific drink by date</button>
+        <li v-for="dsale in specificDrinkSale">Prod ID : {{dsale.prodId}} <br> Sales Quantity : {{dsale.salesQuantity}} <br> Prod Name : {{dsale.prodName}} 
+          <br> Prod Price : {{dsale.prodPrice}} 
+          <br> Total Price : {{dsale.totalPrice}} 
+          <br> Date : {{dsale.orderDate}} </li>
+
+          <br>
+          <br>
+
+          <input v-model="date" type="date">
+        <button v-on:click="getSpecificFoodByDate(date)" class="btn btn-success">Search specific food by date</button>
+        <li v-for="fsale in specificFoodSale">Prod ID : {{fsale.prodId}} <br> Sales Quantity : {{fsale.salesQuantity}} <br> Prod Name : {{fsale.prodName}} 
+          <br> Prod Price : {{fsale.prodPrice}} 
+          <br> Total Price : {{fsale.totalPrice}} 
+          <br> Date : {{fsale.orderDate}} </li>
+
+          <br>
+
+          <button id="clearSpecificItemButton" v-on:click="clearSpecificItem" class="btn btn-danger">Clear</button>
+
+        </ol>
       </div>
     </div>
+
+    
+
 
     <ol class="breadcrumb">
       <li class="breadcrumb-item"><a href="#">Home</a></li>

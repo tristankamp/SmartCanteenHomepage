@@ -159,9 +159,9 @@
               <br>
 
             <input v-model="date" type="date">
-        <button v-on:click="getSpecificDrinkByDate(date)" class="btn btn-success">Search specific drink by date</button>
-        <li v-for="dsale in specificDrinkSale">Prod ID : {{dsale.prodId}} <br> Sales Quantity : {{dsale.salesQuantity}} <br> Prod Name : {{dsale.prodName}} 
-          <br> Prod Price : {{dsale.prodPrice}} 
+        <button v-on:click="getSpecificDrinkByDate(date)" class="btn btn-success">Search drink sales by date</button>
+        <li v-for="dsale in specificDrinkSale">Product ID : {{dsale.prodId}} <br> Sales Quantity : {{dsale.salesQuantity}} <br> Product Name : {{dsale.prodName}} 
+          <br> Product Price : {{dsale.prodPrice}} 
           <br> Total Price : {{dsale.totalPrice}} 
           <br> Date : {{dsale.orderDate}} </li>
 
@@ -169,9 +169,9 @@
           <br>
 
           <input v-model="date" type="date">
-        <button v-on:click="getSpecificFoodByDate(date)" class="btn btn-success">Search specific food by date</button>
-        <li v-for="fsale in specificFoodSale">Prod ID : {{fsale.prodId}} <br> Sales Quantity : {{fsale.salesQuantity}} <br> Prod Name : {{fsale.prodName}} 
-          <br> Prod Price : {{fsale.prodPrice}} 
+        <button v-on:click="getSpecificFoodByDate(date)" class="btn btn-success">Search food sales by date</button>
+        <li v-for="fsale in specificFoodSale">Product ID : {{fsale.prodId}} <br> Sales Quantity : {{fsale.salesQuantity}} <br> Product Name : {{fsale.prodName}} 
+          <br> Product Price : {{fsale.prodPrice}} 
           <br> Total Price : {{fsale.totalPrice}} 
           <br> Date : {{fsale.orderDate}} </li>
 
